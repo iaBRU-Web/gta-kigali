@@ -3,7 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BRU GTA: Kigali Forest & Wildlife</title>
+<title>BRU || GTA KIGALI</title>
+</head>
+<body>
+  
+<canvas id="c"></canvas>
+
+<div id="hud">
+  <div class="card" id="stats">
+    <div class="row">
+      <div id="timeIndicator">
+        <span class="time-icon day-icon" id="timeIcon"></span>
+        <span id="dayNightTxt">Day</span>
+      </div>
+      <div id="timerDisplay">05:00</div>
+    </div>
+    <div class="row"><div>Location</div><div id="locationTxt">Kigali City</div></div>
+    <div class="row"><div>Mode</div><div id="modeTxt">On Foot</div></div>
+    <div class="row"><div>Health</div><div id="hpTxt">100%</div></div>
+    <div class="bar ok"><div id="hpbar" style="width:100%"></div></div>
+    <div class="row"><div>Kills</div><div id="killsTxt">0</div></div>
+  </div>
+  <div class="card" id="weapon">
+    <div>Weapon: <b id="wepName">Rifle</b></div>
+    <div><small>Press <kbd>H</kbd> to switch</small></div>
+  </div>
+</div>
+
+<div id="killFeed"></div>
+<canvas id="minimap" width="200" height="200"></canvas>
+
+<div id="controls" class="card">
+  <div style="font-weight:700;margin-bottom:10px;font-size:16px">Controls</div>
+  <div style="font-size:14px;line-height:1.6">
+    <b>Move:</b> <kbd>WASD</kbd>, <kbd>Mouse</kbd> look, <kbd>Space</kbd> jump<br>
+    <b>Vehicles:</b> <kbd>E</kbd> enter/exit, <kbd>Arrows</kbd> drive<br>
+    <b>Combat:</b> <kbd>Click</kbd> fire, <kbd>H</kbd> switch weapon<br>
+    <b>Buildings:</b> <kbd>E</kbd> enter (night only)<br>
+    <b>Other:</b> <kbd>N</kbd> day/night, <kbd>5</kbd> help, <kbd>M</kbd> audio<br>
+    <b>Landmarks:</b> Explore Kigali Convention Center, Amahoro Stadium, Pelé Stadium<br>
+    <b>Wildlife:</b> Avoid predators in Nyungwe Forest (they hunt vehicles!)<br>
+    <b style="color:#ffd700">Created by INEZA AIME BRUNO</b>
+  </div>
+</div>
+
+<div id="crosshair"><div></div></div>
+
+<div id="gameover">
+  <div>GAME OVER</div>
+  <div style="font-size:20px;margin:12px 0">Time Survived: <span id="finalTime">00:00</span></div>
+  <div style="font-size:20px;margin:12px 0">Kills: <span id="finalKills">0</span></div>
+  <button id="btnNew">New Game</button>
+</div>
+  <footer><creator>Created By || INEZA AIME BRUNO </creator>
+  <a href="https://iabru-web.github.io/BRU1-GTA-RWANDA-/" target="_blank">Play another of our game </a>
+</footer>
+
+<div id="audioToggle">Audio: ON</div>
+<div id="locationInfo"></div>
 <style>
 :root{
   --bg:#0a0d12;
@@ -266,61 +323,6 @@ kbd{
   border:2px solid #ff6666!important;
 }
 </style>
-</head>
-<body>
-<footer><creator>INEZA AIME BRUNO - Kigali Forest & Wildlife Edition</creator></footer>
-
-<canvas id="c"></canvas>
-
-<div id="hud">
-  <div class="card" id="stats">
-    <div class="row">
-      <div id="timeIndicator">
-        <span class="time-icon day-icon" id="timeIcon"></span>
-        <span id="dayNightTxt">Day</span>
-      </div>
-      <div id="timerDisplay">05:00</div>
-    </div>
-    <div class="row"><div>Location</div><div id="locationTxt">Kigali City</div></div>
-    <div class="row"><div>Mode</div><div id="modeTxt">On Foot</div></div>
-    <div class="row"><div>Health</div><div id="hpTxt">100%</div></div>
-    <div class="bar ok"><div id="hpbar" style="width:100%"></div></div>
-    <div class="row"><div>Kills</div><div id="killsTxt">0</div></div>
-  </div>
-  <div class="card" id="weapon">
-    <div>Weapon: <b id="wepName">Rifle</b></div>
-    <div><small>Press <kbd>H</kbd> to switch</small></div>
-  </div>
-</div>
-
-<div id="killFeed"></div>
-<canvas id="minimap" width="200" height="200"></canvas>
-
-<div id="controls" class="card">
-  <div style="font-weight:700;margin-bottom:10px;font-size:16px">Controls</div>
-  <div style="font-size:14px;line-height:1.6">
-    <b>Move:</b> <kbd>WASD</kbd>, <kbd>Mouse</kbd> look, <kbd>Space</kbd> jump<br>
-    <b>Vehicles:</b> <kbd>E</kbd> enter/exit, <kbd>Arrows</kbd> drive<br>
-    <b>Combat:</b> <kbd>Click</kbd> fire, <kbd>H</kbd> switch weapon<br>
-    <b>Buildings:</b> <kbd>E</kbd> enter (night only)<br>
-    <b>Other:</b> <kbd>N</kbd> day/night, <kbd>5</kbd> help, <kbd>M</kbd> audio<br>
-    <b>Landmarks:</b> Explore Kigali Convention Center, Amahoro Stadium, Pelé Stadium<br>
-    <b>Wildlife:</b> Avoid predators in Nyungwe Forest (they hunt vehicles!)<br>
-    <b style="color:#ffd700">Created by INEZA AIME BRUNO</b>
-  </div>
-</div>
-
-<div id="crosshair"><div></div></div>
-
-<div id="gameover">
-  <div>GAME OVER</div>
-  <div style="font-size:20px;margin:12px 0">Time Survived: <span id="finalTime">00:00</span></div>
-  <div style="font-size:20px;margin:12px 0">Kills: <span id="finalKills">0</span></div>
-  <button id="btnNew">New Game</button>
-</div>
-
-<div id="audioToggle">Audio: ON</div>
-<div id="locationInfo"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -2054,4 +2056,5 @@ kbd{
 })();
 </script>
 </body>
+
 </html>
